@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- classPathEntry:锟斤拷菘锟斤拷JDBC锟斤拷,锟斤拷锟斤拷锟斤拷锟皆硷拷锟斤拷锟斤拷位锟斤拷 -->
+	<classPathEntry location="mysql-connector-java-5.1.24.jar" />
+	
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		
+		<!-- 去锟斤拷锟皆讹拷锟斤拷傻锟阶拷锟?-->
+		<commentGenerator>
+			<property name="suppressAllComments" value="false" />
+			<property name="suppressAllComments" value="false" />
+		</commentGenerator>
+		
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/wuliu" userId="root" password="">
+		</jdbcConnection>
+		
+		<javaTypeResolver >
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		
+		<!-- targetProject:锟皆讹拷锟斤拷纱锟斤拷锟斤拷位锟斤拷 -->
+		<javaModelGenerator targetPackage="com.internet.cms.model" targetProject="src">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!-- targetProject:锟皆讹拷锟斤拷锟組apper锟侥硷拷 -->
+		<sqlMapGenerator targetPackage="com.internet.cms.conf"  targetProject="src">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!-- targetProject:锟皆讹拷锟斤拷锟絛ao锟接口碉拷锟侥硷拷 -->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.internet.cms.dao.test"  targetProject="src">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<!-- tableName:锟斤拷锟斤拷锟皆讹拷锟斤拷纱锟斤拷锟斤拷锟斤拷菘锟?domainObjectName:锟斤拷应锟斤拷锟斤拷菘锟斤拷锟絡avaBean锟斤拷锟斤拷 -->
+		<table tableName="test" domainObjectName="Test" />
+	</context>
+</generatorConfiguration>

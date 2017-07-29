@@ -1,0 +1,48 @@
+<div class="easyui-layout" id="{pageId}">
+	<div region="center">
+		<div class="easyui-accordion" fit="false" id="left-menus">
+			</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+(function($c) {
+	var Action = {};
+	
+	Action.getMenuData = function(){
+		var data = [];
+		var data1 = {"name": "用户管理", "subMenus": [{"name": "用户列表", "url": "/common/header.html"}]};
+		var data2 = {"name": "经济管理", "subMenus": [{"name": "红包管理 ","url": "/common/header.html"}]};
+		var data3 = {"name": "问卷管理", "subMenus": [{"name": "问题列表","url": "/common/header.html"}]};
+		data.push(data1);
+		data.push(data2);
+		data.push(data3);
+		return data;
+	};
+	
+	Action.initMenu = function(){
+		var html = '';
+		var data = Action.getMenuData();
+		$.each(data, function(i, item){
+			html += '<div title="'+item.name+'" style="overflow:auto;" data-options="iconCls:\'icon-folder-open\'"><ul class="submenu">';
+			$.each(item.subMenus,function(j, menu){
+				html += '<li><a href="'+menu.url+'" data-event="click:open"><i class="icon-caret-right mr5"></i>'+menu.name+'</a></li>';
+			});
+			html+='</ul></div>';
+		});
+		$("#left-menus").append(html);
+	};
+
+	Action.open = function(){
+		var el=$(this);
+		$("#left-menus").find("ul li").removeClass("sub-selected");
+		el.parent().addClass("sub-selected");
+		var title = el.text();
+		var url = el.attr("href");
+		Tab.open(title, ctx + "/page" + url, false); 
+		return false;
+	};
+	Action.initMenu();
+	Page.init($c, Action);
+})($("#{pageId}"));
+</script>
